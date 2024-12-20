@@ -1,0 +1,3624 @@
+@prefix :        <http://www.w3.org/XML/1998/namespace#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dtype:   <http://www.srdc.com.tr/ontmalizer#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://datacite.org/schema/kernel-4#resourceType>
+      a       owl:Class , owl:ObjectProperty ;
+      rdfs:comment "The general type of a resource." ;
+      rdfs:subClassOf dtype:EnumeratedValue ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      owl:oneOf (<http://datacite.org/schema/kernel-4#resourceType_Audiovisual> <http://datacite.org/schema/kernel-4#resourceType_Award> <http://datacite.org/schema/kernel-4#resourceType_Book> <http://datacite.org/schema/kernel-4#resourceType_BookChapter> <http://datacite.org/schema/kernel-4#resourceType_Collection> <http://datacite.org/schema/kernel-4#resourceType_ComputationalNotebook> <http://datacite.org/schema/kernel-4#resourceType_ConferencePaper> <http://datacite.org/schema/kernel-4#resourceType_ConferenceProceeding> <http://datacite.org/schema/kernel-4#resourceType_DataPaper> <http://datacite.org/schema/kernel-4#resourceType_Dataset> <http://datacite.org/schema/kernel-4#resourceType_Dissertation> <http://datacite.org/schema/kernel-4#resourceType_Event> <http://datacite.org/schema/kernel-4#resourceType_Image> <http://datacite.org/schema/kernel-4#resourceType_Instrument> <http://datacite.org/schema/kernel-4#resourceType_InteractiveResource> <http://datacite.org/schema/kernel-4#resourceType_Journal> <http://datacite.org/schema/kernel-4#resourceType_JournalArticle> <http://datacite.org/schema/kernel-4#resourceType_Model> <http://datacite.org/schema/kernel-4#resourceType_OutputManagementPlan> <http://datacite.org/schema/kernel-4#resourceType_PeerReview> <http://datacite.org/schema/kernel-4#resourceType_PhysicalObject> <http://datacite.org/schema/kernel-4#resourceType_Preprint> <http://datacite.org/schema/kernel-4#resourceType_Project> <http://datacite.org/schema/kernel-4#resourceType_Report> <http://datacite.org/schema/kernel-4#resourceType_Service> <http://datacite.org/schema/kernel-4#resourceType_Software> <http://datacite.org/schema/kernel-4#resourceType_Sound> <http://datacite.org/schema/kernel-4#resourceType_Standard> <http://datacite.org/schema/kernel-4#resourceType_StudyRegistration> <http://datacite.org/schema/kernel-4#resourceType_Text> <http://datacite.org/schema/kernel-4#resourceType_Workflow> <http://datacite.org/schema/kernel-4#resourceType_Other>) .
+
+xsd:shortDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:short ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:short
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_Cites>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "Cites" .
+
+<http://datacite.org/schema/kernel-4#dateType_Submitted>
+      a       <http://datacite.org/schema/kernel-4#dateType> ;
+      dtype:hasValue "Submitted" .
+
+<http://datacite.org/schema/kernel-4#dateInformation>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#titleType_Subtitle>
+      a       <http://datacite.org/schema/kernel-4#titleType> ;
+      dtype:hasValue "Subtitle" .
+
+<http://datacite.org/schema/kernel-4#resourceType_Model>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Model" .
+
+<http://datacite.org/schema/kernel-4#dateType_Enumeration>
+      a       dtype:Enumeration ;
+      dtype:hasValue <http://datacite.org/schema/kernel-4#dateType_Withdrawn> , <http://datacite.org/schema/kernel-4#dateType_Updated> , <http://datacite.org/schema/kernel-4#dateType_Collected> , <http://datacite.org/schema/kernel-4#dateType_Issued> , <http://datacite.org/schema/kernel-4#dateType_Accepted> , <http://datacite.org/schema/kernel-4#dateType_Submitted> , <http://datacite.org/schema/kernel-4#dateType_Valid> , <http://datacite.org/schema/kernel-4#dateType_Coverage> , <http://datacite.org/schema/kernel-4#dateType_Available> , <http://datacite.org/schema/kernel-4#dateType_Copyrighted> , <http://datacite.org/schema/kernel-4#dateType_Other> , <http://datacite.org/schema/kernel-4#dateType_Created> .
+
+<http://datacite.org/schema/kernel-4#nameIdentifier>
+      a       owl:Class , owl:ObjectProperty ;
+      rdfs:comment "Uniquely identifies a creator or contributor, according to various identifier schemes." ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:anyURI ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameIdentifierScheme>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameIdentifierScheme>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#nonemptycontentStringTypeDatatype> ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] .
+
+<http://datacite.org/schema/kernel-4#firstPage>
+      a       owl:ObjectProperty .
+
+xsd:tokenDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:token ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:token
+              ] .
+
+xsd:IDREFDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:IDREF ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:IDREF
+              ] .
+
+<http://datacite.org/schema/kernel-4#funderIdentifierType_GRID>
+      a       <http://datacite.org/schema/kernel-4#funderIdentifierType> ;
+      dtype:hasValue "GRID" .
+
+:specialAttrs
+      a       owl:Class ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:anyURI ;
+                owl:onProperty :base
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:language ;
+                owl:onProperty :lang
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom :Class_20Datatype ;
+                owl:onProperty :space
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty :space
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty :lang
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty :base
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_IsDerivedFrom>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsDerivedFrom" .
+
+<http://datacite.org/schema/kernel-4#br>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#language>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#contributorType_Distributor>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "Distributor" .
+
+<http://datacite.org/schema/kernel-4#descriptionType_Methods>
+      a       <http://datacite.org/schema/kernel-4#descriptionType> ;
+      dtype:hasValue "Methods" .
+
+xsd:anyURIDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:anyURI ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:anyURI
+              ] .
+
+<http://datacite.org/schema/kernel-4#numberType_Chapter>
+      a       <http://datacite.org/schema/kernel-4#numberType> ;
+      dtype:hasValue "Chapter" .
+
+<http://datacite.org/schema/kernel-4#relationType_IsIdenticalTo>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsIdenticalTo" .
+
+<http://datacite.org/schema/kernel-4#relationType_HasVersion>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "HasVersion" .
+
+<http://datacite.org/schema/kernel-4#edtfDatatype>
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:string ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:string ;
+                owl:withRestrictions
+                        ([ xsd:pattern "((-)?(\\d{4}(-\\d{2})?(-\\d{2})?)|unknown)/((-)?(\\d{4}(-\\d{2})?(-\\d{2})?)|unknown|open)"
+                          ])
+              ] .
+
+xsd:nonPositiveIntegerDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:nonPositiveInteger ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:nonPositiveInteger
+              ] .
+
+<http://datacite.org/schema/kernel-4#Anon_6>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#titleType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:language ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#titleTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#titleType>
+              ] .
+
+<http://datacite.org/schema/kernel-4#dateType_Created>
+      a       <http://datacite.org/schema/kernel-4#dateType> ;
+      dtype:hasValue "Created" .
+
+xsd:hexBinaryDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:hexBinary ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:hexBinary
+              ] .
+
+<http://datacite.org/schema/kernel-4#resourceType_Preprint>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Preprint" .
+
+<http://datacite.org/schema/kernel-4#descriptionType>
+      a       owl:DatatypeProperty , owl:Class ;
+      rdfs:comment "The type of the description." ;
+      rdfs:subClassOf dtype:EnumeratedValue ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      owl:oneOf (<http://datacite.org/schema/kernel-4#descriptionType_Abstract> <http://datacite.org/schema/kernel-4#descriptionType_Methods> <http://datacite.org/schema/kernel-4#descriptionType_SeriesInformation> <http://datacite.org/schema/kernel-4#descriptionType_TableOfContents> <http://datacite.org/schema/kernel-4#descriptionType_TechnicalInfo> <http://datacite.org/schema/kernel-4#descriptionType_Other>) .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_IGSN>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "IGSN" .
+
+:lang
+      a       owl:DatatypeProperty .
+
+:Class_20_default
+      a       :Class_20 ;
+      dtype:hasValue "default"^^xsd:NCName .
+
+<http://datacite.org/schema/kernel-4#funderIdentifierType_ROR>
+      a       <http://datacite.org/schema/kernel-4#funderIdentifierType> ;
+      dtype:hasValue "ROR" .
+
+<http://datacite.org/schema/kernel-4#Anon_7>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:language ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#publisherIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:anyURI ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#publisherIdentifierScheme>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#nonemptycontentStringTypeDatatype> ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#publisherIdentifierScheme>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#publisherIdentifier>
+              ] .
+
+<http://datacite.org/schema/kernel-4#dateType_Available>
+      a       <http://datacite.org/schema/kernel-4#dateType> ;
+      dtype:hasValue "Available" .
+
+<http://datacite.org/schema/kernel-4#contributorType_Researcher>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "Researcher" .
+
+<http://datacite.org/schema/kernel-4#dateType_Valid>
+      a       <http://datacite.org/schema/kernel-4#dateType> ;
+      dtype:hasValue "Valid" .
+
+<http://datacite.org/schema/kernel-4#contributorType_RightsHolder>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "RightsHolder" .
+
+<http://datacite.org/schema/kernel-4#Anon_8>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#resourceTypeGeneral>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#resourceTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#resourceTypeGeneral>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType>
+      a       owl:DatatypeProperty , owl:Class ;
+      rdfs:comment "The type of the RelatedIdentifier." ;
+      rdfs:subClassOf dtype:EnumeratedValue ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      owl:oneOf (<http://datacite.org/schema/kernel-4#relatedIdentifierType_ARK> <http://datacite.org/schema/kernel-4#relatedIdentifierType_arXiv> <http://datacite.org/schema/kernel-4#relatedIdentifierType_bibcode> <http://datacite.org/schema/kernel-4#relatedIdentifierType_CSTR> <http://datacite.org/schema/kernel-4#relatedIdentifierType_DOI> <http://datacite.org/schema/kernel-4#relatedIdentifierType_EAN13> <http://datacite.org/schema/kernel-4#relatedIdentifierType_EISSN> <http://datacite.org/schema/kernel-4#relatedIdentifierType_Handle> <http://datacite.org/schema/kernel-4#relatedIdentifierType_IGSN> <http://datacite.org/schema/kernel-4#relatedIdentifierType_ISBN> <http://datacite.org/schema/kernel-4#relatedIdentifierType_ISSN> <http://datacite.org/schema/kernel-4#relatedIdentifierType_ISTC> <http://datacite.org/schema/kernel-4#relatedIdentifierType_LISSN> <http://datacite.org/schema/kernel-4#relatedIdentifierType_LSID> <http://datacite.org/schema/kernel-4#relatedIdentifierType_PMID> <http://datacite.org/schema/kernel-4#relatedIdentifierType_PURL> <http://datacite.org/schema/kernel-4#relatedIdentifierType_RRID> <http://datacite.org/schema/kernel-4#relatedIdentifierType_UPC> <http://datacite.org/schema/kernel-4#relatedIdentifierType_URL> <http://datacite.org/schema/kernel-4#relatedIdentifierType_URN> <http://datacite.org/schema/kernel-4#relatedIdentifierType_w3id>) .
+
+:Class_20Datatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:NCName ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:NCName
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_HasPart>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "HasPart" .
+
+<http://datacite.org/schema/kernel-4#title>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#descriptionType_Enumeration>
+      a       dtype:Enumeration ;
+      dtype:hasValue <http://datacite.org/schema/kernel-4#descriptionType_TableOfContents> , <http://datacite.org/schema/kernel-4#descriptionType_Methods> , <http://datacite.org/schema/kernel-4#descriptionType_Abstract> , <http://datacite.org/schema/kernel-4#descriptionType_SeriesInformation> , <http://datacite.org/schema/kernel-4#descriptionType_TechnicalInfo> , <http://datacite.org/schema/kernel-4#descriptionType_Other> .
+
+<http://datacite.org/schema/kernel-4#latitudeTypeDatatype>
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:float ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:float ;
+                owl:withRestrictions
+                        ([ xsd:minInclusive "-90"^^xsd:float
+                          ] [ xsd:maxInclusive "90"^^xsd:float
+                          ])
+              ] .
+
+<http://datacite.org/schema/kernel-4#dateType>
+      a       owl:DatatypeProperty , owl:Class ;
+      rdfs:comment "The type of date. Use RKMS‐ISO8601 standard for depicting date ranges.To indicate the end of an embargo period, use Available. To indicate the start of an embargo period, use Submitted or Accepted, as appropriate." ;
+      rdfs:subClassOf dtype:EnumeratedValue ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      owl:oneOf (<http://datacite.org/schema/kernel-4#dateType_Accepted> <http://datacite.org/schema/kernel-4#dateType_Available> <http://datacite.org/schema/kernel-4#dateType_Collected> <http://datacite.org/schema/kernel-4#dateType_Copyrighted> <http://datacite.org/schema/kernel-4#dateType_Coverage> <http://datacite.org/schema/kernel-4#dateType_Created> <http://datacite.org/schema/kernel-4#dateType_Issued> <http://datacite.org/schema/kernel-4#dateType_Other> <http://datacite.org/schema/kernel-4#dateType_Submitted> <http://datacite.org/schema/kernel-4#dateType_Updated> <http://datacite.org/schema/kernel-4#dateType_Valid> <http://datacite.org/schema/kernel-4#dateType_Withdrawn>) .
+
+xsd:IDREFSDatatype
+      a       rdfs:Datatype .
+
+<http://datacite.org/schema/kernel-4#contributorType_Producer>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "Producer" .
+
+<http://datacite.org/schema/kernel-4#Anon_9>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#subject>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_10> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#subject>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#subject>
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_References>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "References" .
+
+<http://datacite.org/schema/kernel-4#northBoundLatitude>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#Anon_2>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_3> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#creator>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#creator>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#creator>
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_IsSupplementTo>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsSupplementTo" .
+
+<http://datacite.org/schema/kernel-4#resourceType_Image>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Image" .
+
+xsd:NMTOKENDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:NMTOKEN ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:NMTOKEN
+              ] .
+
+<http://datacite.org/schema/kernel-4#relatedItem>
+      a       owl:ObjectProperty .
+
+:Class_20_Enumeration
+      a       dtype:Enumeration ;
+      dtype:hasValue :Class_20_default , :Class_20_preserve .
+
+<http://datacite.org/schema/kernel-4#Anon_3>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#familyName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#affiliation>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#affiliation>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#givenName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#givenName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#creatorName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_4> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#creatorName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#familyName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#affiliation>
+              ] .
+
+xsd:anySimpleTypeDatatype
+      a       rdfs:Datatype .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_Handle>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "Handle" .
+
+<http://datacite.org/schema/kernel-4#Anon_4>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:language ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#nameTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameType>
+              ] .
+
+<http://datacite.org/schema/kernel-4#subjectScheme>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#nullDatatype>
+      a       rdfs:Datatype ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#yearTypeDatatype> , <http://datacite.org/schema/kernel-4#nonemptycontentStringTypeDatatype> ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype <http://datacite.org/schema/kernel-4#nonemptycontentStringTypeDatatype>
+              ] ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype <http://datacite.org/schema/kernel-4#yearTypeDatatype>
+              ] ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype <http://datacite.org/schema/kernel-4#yearTypeDatatype>
+              ] .
+
+:space
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#numberType_Other>
+      a       <http://datacite.org/schema/kernel-4#numberType> ;
+      dtype:hasValue "Other" .
+
+<http://datacite.org/schema/kernel-4#dateType_Updated>
+      a       <http://datacite.org/schema/kernel-4#dateType> ;
+      dtype:hasValue "Updated" .
+
+<http://datacite.org/schema/kernel-4#resourceType_Project>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Project" .
+
+<http://datacite.org/schema/kernel-4#Anon_5>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#title>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#title>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_6> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#title>
+              ] .
+
+<http://datacite.org/schema/kernel-4#alternateIdentifierType>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_ISTC>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "ISTC" .
+
+<http://datacite.org/schema/kernel-4#relationType_Requires>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "Requires" .
+
+xsd:normalizedStringDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:normalizedString ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:normalizedString
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_IsDocumentedBy>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsDocumentedBy" .
+
+<http://datacite.org/schema/kernel-4#funderIdentifierType>
+      a       owl:DatatypeProperty , owl:Class ;
+      rdfs:comment "The type of the funderIdentifier." ;
+      rdfs:subClassOf dtype:EnumeratedValue ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      owl:oneOf (<http://datacite.org/schema/kernel-4#funderIdentifierType_ISNI> <http://datacite.org/schema/kernel-4#funderIdentifierType_GRID> <http://datacite.org/schema/kernel-4#funderIdentifierType_ROR> <http://datacite.org/schema/kernel-4#funderIdentifierType_Crossref_Funder_ID> <http://datacite.org/schema/kernel-4#funderIdentifierType_Other>) .
+
+<http://datacite.org/schema/kernel-4#resourceType_Dissertation>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Dissertation" .
+
+<http://datacite.org/schema/kernel-4#titleType>
+      a       owl:DatatypeProperty , owl:Class ;
+      rdfs:subClassOf dtype:EnumeratedValue ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      owl:oneOf (<http://datacite.org/schema/kernel-4#titleType_AlternativeTitle> <http://datacite.org/schema/kernel-4#titleType_Subtitle> <http://datacite.org/schema/kernel-4#titleType_TranslatedTitle> <http://datacite.org/schema/kernel-4#titleType_Other>) .
+
+<http://datacite.org/schema/kernel-4#relationType_IsContinuedBy>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsContinuedBy" .
+
+<http://datacite.org/schema/kernel-4#relationType_IsPreviousVersionOf>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsPreviousVersionOf" .
+
+<http://datacite.org/schema/kernel-4#contributorType>
+      a       owl:DatatypeProperty , owl:Class ;
+      rdfs:comment "The type of contributor of the resource." ;
+      rdfs:subClassOf dtype:EnumeratedValue ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      owl:oneOf (<http://datacite.org/schema/kernel-4#contributorType_ContactPerson> <http://datacite.org/schema/kernel-4#contributorType_DataCollector> <http://datacite.org/schema/kernel-4#contributorType_DataCurator> <http://datacite.org/schema/kernel-4#contributorType_DataManager> <http://datacite.org/schema/kernel-4#contributorType_Distributor> <http://datacite.org/schema/kernel-4#contributorType_Editor> <http://datacite.org/schema/kernel-4#contributorType_HostingInstitution> <http://datacite.org/schema/kernel-4#contributorType_Other> <http://datacite.org/schema/kernel-4#contributorType_Producer> <http://datacite.org/schema/kernel-4#contributorType_ProjectLeader> <http://datacite.org/schema/kernel-4#contributorType_ProjectManager> <http://datacite.org/schema/kernel-4#contributorType_ProjectMember> <http://datacite.org/schema/kernel-4#contributorType_RegistrationAgency> <http://datacite.org/schema/kernel-4#contributorType_RegistrationAuthority> <http://datacite.org/schema/kernel-4#contributorType_RelatedPerson> <http://datacite.org/schema/kernel-4#contributorType_ResearchGroup> <http://datacite.org/schema/kernel-4#contributorType_RightsHolder> <http://datacite.org/schema/kernel-4#contributorType_Researcher> <http://datacite.org/schema/kernel-4#contributorType_Sponsor> <http://datacite.org/schema/kernel-4#contributorType_Supervisor> <http://datacite.org/schema/kernel-4#contributorType_Translator> <http://datacite.org/schema/kernel-4#contributorType_WorkPackageLeader>) .
+
+<http://datacite.org/schema/kernel-4#relationType_IsSupplementedBy>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsSupplementedBy" .
+
+<http://datacite.org/schema/kernel-4#relationType_IsCollectedBy>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsCollectedBy" .
+
+<http://datacite.org/schema/kernel-4#relatedItems>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#resourceType_PeerReview>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "PeerReview" .
+
+xsd:positiveIntegerDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:positiveInteger ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:positiveInteger
+              ] .
+
+<http://datacite.org/schema/kernel-4#pointLongitude>
+      a       owl:DatatypeProperty .
+
+xsd:integerDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:integer ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:integer
+              ] .
+
+<http://datacite.org/schema/kernel-4#Anon_1>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#identifierType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#nonemptycontentStringTypeDatatype> ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#identifierType>
+              ] .
+
+<http://datacite.org/schema/kernel-4#creatorName>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#descriptionType_Abstract>
+      a       <http://datacite.org/schema/kernel-4#descriptionType> ;
+      dtype:hasValue "Abstract" .
+
+xsd:gMonthDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:gMonth ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:gMonth
+              ] .
+
+<http://datacite.org/schema/kernel-4#geoLocationBox>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#relationType_IsReferencedBy>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsReferencedBy" .
+
+<http://datacite.org/schema/kernel-4#nameType>
+      a       owl:DatatypeProperty , owl:Class ;
+      rdfs:subClassOf dtype:EnumeratedValue ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      owl:oneOf (<http://datacite.org/schema/kernel-4#nameType_Organizational> <http://datacite.org/schema/kernel-4#nameType_Personal>) .
+
+<http://datacite.org/schema/kernel-4#geoLocations>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#version>
+      a       owl:DatatypeProperty .
+
+xsd:booleanDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:boolean ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:boolean
+              ] .
+
+<http://datacite.org/schema/kernel-4#creators>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#affiliation>
+      a       owl:Class , owl:ObjectProperty ;
+      rdfs:comment "Uniquely identifies an affiliation, according to various identifier schemes." ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:anyURI ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#affiliationIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#nonemptycontentStringTypeDatatype> ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#affiliationIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#affiliationIdentifierScheme>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#affiliationIdentifierScheme>
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_HasMetadata>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "HasMetadata" .
+
+<http://datacite.org/schema/kernel-4#dateTypeDatatype>
+      a       rdfs:Datatype ;
+      rdfs:comment "The type of date. Use RKMS‐ISO8601 standard for depicting date ranges.To indicate the end of an embargo period, use Available. To indicate the start of an embargo period, use Submitted or Accepted, as appropriate." ;
+      rdfs:subClassOf xsd:string , <http://datacite.org/schema/kernel-4#dateType> ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype <http://datacite.org/schema/kernel-4#dateType>
+              ] ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:string
+              ] .
+
+<http://datacite.org/schema/kernel-4#contributorType_RegistrationAuthority>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "RegistrationAuthority" .
+
+<http://datacite.org/schema/kernel-4#lang>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#resourceType_BookChapter>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "BookChapter" .
+
+<http://datacite.org/schema/kernel-4#sizes>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#funderIdentifierType_ISNI>
+      a       <http://datacite.org/schema/kernel-4#funderIdentifierType> ;
+      dtype:hasValue "ISNI" .
+
+<http://datacite.org/schema/kernel-4#Anon_29>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#inPolygonPoint>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#point> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#polygonPoint>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "4"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#polygonPoint>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#polygonPoint>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#point> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#inPolygonPoint>
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_Documents>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "Documents" .
+
+dtype:Enumeration
+      a       owl:Class .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_PURL>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "PURL" .
+
+xsd:gYearMonthDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:gYearMonth ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:gYearMonth
+              ] .
+
+<http://datacite.org/schema/kernel-4#fundingReference>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#Anon_28>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#box> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#geoLocationBox>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#geoLocationPoint>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_29> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#geoLocationPolygon>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#geoLocationBox>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#geoLocationPolygon>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#point> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#geoLocationPoint>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#geoLocationPolygon>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#geoLocationPlace>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#geoLocationPlace>
+              ] .
+
+xsd:NCNameDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:NCName ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:NCName
+              ] .
+
+<http://datacite.org/schema/kernel-4#resource>
+      a       owl:Class ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_7> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#publisher>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_14> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#dates>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#descriptions>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_11> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributors>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedItems>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedIdentifiers>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#dates>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#rightsList>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_22> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#rightsList>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_30> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#fundingReferences>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_2> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#creators>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_16> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#alternateIdentifiers>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_27> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#geoLocations>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#publicationYear>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#titles>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_21> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#formats>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributors>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#geoLocations>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#version>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#publisher>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#nullDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#publicationYear>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#version>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_20> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#sizes>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#creators>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_9> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#subjects>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:language ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#language>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_5> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#titles>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_8> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#resourceType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#alternateIdentifiers>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#fundingReferences>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_34> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedItems>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#resourceType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#sizes>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_24> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#descriptions>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#language>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#subjects>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#identifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_1> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#identifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#formats>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_18> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedIdentifiers>
+              ] .
+
+<http://datacite.org/schema/kernel-4#resourceTypeDatatype>
+      a       rdfs:Datatype ;
+      rdfs:comment "The general type of a resource." ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#resourceType> , xsd:string ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:string
+              ] ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype <http://datacite.org/schema/kernel-4#resourceType>
+              ] .
+
+<http://datacite.org/schema/kernel-4#numberType>
+      a       owl:DatatypeProperty , owl:Class ;
+      rdfs:subClassOf dtype:EnumeratedValue ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      owl:oneOf (<http://datacite.org/schema/kernel-4#numberType_Article> <http://datacite.org/schema/kernel-4#numberType_Chapter> <http://datacite.org/schema/kernel-4#numberType_Report> <http://datacite.org/schema/kernel-4#numberType_Other>) .
+
+<http://datacite.org/schema/kernel-4#resourceType_ConferencePaper>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "ConferencePaper" .
+
+xsd:ENTITYDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:ENTITY ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:ENTITY
+              ] .
+
+dtype:hasValue
+      a       rdf:Property .
+
+<http://datacite.org/schema/kernel-4#dateType_Other>
+      a       <http://datacite.org/schema/kernel-4#dateType> ;
+      dtype:hasValue "Other" .
+
+<http://datacite.org/schema/kernel-4#resourceType_Standard>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Standard" .
+
+<http://datacite.org/schema/kernel-4#Anon_27>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#geoLocation>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#geoLocation>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_28> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#geoLocation>
+              ] .
+
+xsd:dateDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:date ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:date
+              ] .
+
+<http://datacite.org/schema/kernel-4#Anon_26>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> .
+
+xsd:gMonthDayDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:gMonthDay ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:gMonthDay
+              ] .
+
+<http://datacite.org/schema/kernel-4#volume>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#titleType_AlternativeTitle>
+      a       <http://datacite.org/schema/kernel-4#titleType> ;
+      dtype:hasValue "AlternativeTitle" .
+
+<http://datacite.org/schema/kernel-4#relationType_IsVariantFormOf>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsVariantFormOf" .
+
+<http://datacite.org/schema/kernel-4#publicationYear>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#relatedMetadataScheme>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#Anon_25>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#br>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#descriptionType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:language ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty :textContent
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#br>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty :textContent
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#textContent>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#textContent>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#descriptionTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#descriptionType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_26> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#br>
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_Reviews>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "Reviews" .
+
+<http://datacite.org/schema/kernel-4#awardNumber>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#relationType_HasTranslation>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "HasTranslation" .
+
+<http://datacite.org/schema/kernel-4#resourceType_PhysicalObject>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "PhysicalObject" .
+
+<http://datacite.org/schema/kernel-4#Anon_24>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#description>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#description>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_25> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#description>
+              ] .
+
+xsd:languageDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:language ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:language
+              ] .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_RRID>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "RRID" .
+
+<http://datacite.org/schema/kernel-4#rightsURI>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#resourceType_ConferenceProceeding>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "ConferenceProceeding" .
+
+<http://datacite.org/schema/kernel-4#date>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#Anon_23>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:language ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#rightsIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#rightsIdentifierScheme>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:anyURI ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#rightsURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#rightsIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:anyURI ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#rightsURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#rightsIdentifierScheme>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] .
+
+xsd:byteDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:byte ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:byte
+              ] .
+
+<http://datacite.org/schema/kernel-4#yearTypeDatatype>
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:token ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:token ;
+                owl:withRestrictions
+                        ([ xsd:pattern "[\\d]{4}"
+                          ])
+              ] .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_ISSN>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "ISSN" .
+
+<http://datacite.org/schema/kernel-4#resourceType_Dataset>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Dataset" .
+
+xsd:anyType
+      a       owl:Class ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty xsd:textContent
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty xsd:textContent
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#textContent>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty :textContent
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty :textContent
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#textContent>
+              ] .
+
+<http://datacite.org/schema/kernel-4#contributorName>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#numberType_Enumeration>
+      a       dtype:Enumeration ;
+      dtype:hasValue <http://datacite.org/schema/kernel-4#numberType_Chapter> , <http://datacite.org/schema/kernel-4#numberType_Article> , <http://datacite.org/schema/kernel-4#numberType_Other> , <http://datacite.org/schema/kernel-4#numberType_Report> .
+
+<http://datacite.org/schema/kernel-4#relationType_IsObsoletedBy>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsObsoletedBy" .
+
+<http://datacite.org/schema/kernel-4#Anon_22>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#rights>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_23> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#rights>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#rights>
+              ] .
+
+<http://datacite.org/schema/kernel-4#Anon_45>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#nameTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:language ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameType>
+              ] .
+
+<http://datacite.org/schema/kernel-4#funderIdentifierType_Other>
+      a       <http://datacite.org/schema/kernel-4#funderIdentifierType> ;
+      dtype:hasValue "Other" .
+
+<http://datacite.org/schema/kernel-4#description>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#Anon_21>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#format>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#format>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#format>
+              ] .
+
+<http://datacite.org/schema/kernel-4#contributors>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#resourceType_OutputManagementPlan>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "OutputManagementPlan" .
+
+<http://datacite.org/schema/kernel-4#funderIdentifierTypeDatatype>
+      a       rdfs:Datatype ;
+      rdfs:comment "The type of the funderIdentifier." ;
+      rdfs:subClassOf xsd:string , <http://datacite.org/schema/kernel-4#funderIdentifierType> ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype <http://datacite.org/schema/kernel-4#funderIdentifierType>
+              ] ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:string
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_IsCitedBy>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsCitedBy" .
+
+<http://datacite.org/schema/kernel-4#titleType_TranslatedTitle>
+      a       <http://datacite.org/schema/kernel-4#titleType> ;
+      dtype:hasValue "TranslatedTitle" .
+
+<http://datacite.org/schema/kernel-4#affiliationIdentifierScheme>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#titleTypeDatatype>
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:string , <http://datacite.org/schema/kernel-4#titleType> ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype <http://datacite.org/schema/kernel-4#titleType>
+              ] ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:string
+              ] .
+
+<http://datacite.org/schema/kernel-4#Anon_20>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#size>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#size>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#size>
+              ] .
+
+<http://datacite.org/schema/kernel-4#Anon_44>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#familyName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributorType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#givenName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#contributorTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributorType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributorName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_45> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributorName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#familyName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#givenName>
+              ] .
+
+xsd:unsignedIntDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:unsignedInt ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:unsignedInt
+              ] .
+
+<http://datacite.org/schema/kernel-4#formats>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#Anon_43>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_44> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributor>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributor>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributor>
+              ] .
+
+<http://datacite.org/schema/kernel-4#alternateIdentifiers>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#relationType_Continues>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "Continues" .
+
+<http://datacite.org/schema/kernel-4#Anon_42>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#numberTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#numberType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#numberType>
+              ] .
+
+xsd:gDayDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:gDay ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:gDay
+              ] .
+
+<http://datacite.org/schema/kernel-4#publisherIdentifierScheme>
+      a       owl:DatatypeProperty .
+
+:base
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_LSID>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "LSID" .
+
+xsd:QNameDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:QName ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:QName
+              ] .
+
+<http://datacite.org/schema/kernel-4#Anon_41>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:language ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#titleTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#titleType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#titleType>
+              ] .
+
+<http://datacite.org/schema/kernel-4#contributorType_ProjectLeader>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "ProjectLeader" .
+
+<http://datacite.org/schema/kernel-4#resourceType_Book>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Book" .
+
+<http://datacite.org/schema/kernel-4#geoLocationPlace>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#Anon_40>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#title>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#title>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_41> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#title>
+              ] .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_ISBN>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "ISBN" .
+
+<http://datacite.org/schema/kernel-4#nameType_Organizational>
+      a       <http://datacite.org/schema/kernel-4#nameType> ;
+      dtype:hasValue "Organizational" .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_LISSN>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "LISSN" .
+
+<http://datacite.org/schema/kernel-4#numberTypeDatatype>
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:string , <http://datacite.org/schema/kernel-4#numberType> ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:string
+              ] ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype <http://datacite.org/schema/kernel-4#numberType>
+              ] .
+
+<http://datacite.org/schema/kernel-4#dateType_Copyrighted>
+      a       <http://datacite.org/schema/kernel-4#dateType> ;
+      dtype:hasValue "Copyrighted" .
+
+<http://datacite.org/schema/kernel-4#textContent>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#resourceType_Enumeration>
+      a       dtype:Enumeration ;
+      dtype:hasValue <http://datacite.org/schema/kernel-4#resourceType_Journal> , <http://datacite.org/schema/kernel-4#resourceType_ConferenceProceeding> , <http://datacite.org/schema/kernel-4#resourceType_Service> , <http://datacite.org/schema/kernel-4#resourceType_Software> , <http://datacite.org/schema/kernel-4#resourceType_Instrument> , <http://datacite.org/schema/kernel-4#resourceType_Other> , <http://datacite.org/schema/kernel-4#resourceType_Collection> , <http://datacite.org/schema/kernel-4#resourceType_DataPaper> , <http://datacite.org/schema/kernel-4#resourceType_Report> , <http://datacite.org/schema/kernel-4#resourceType_JournalArticle> , <http://datacite.org/schema/kernel-4#resourceType_OutputManagementPlan> , <http://datacite.org/schema/kernel-4#resourceType_Image> , <http://datacite.org/schema/kernel-4#resourceType_BookChapter> , <http://datacite.org/schema/kernel-4#resourceType_Preprint> , <http://datacite.org/schema/kernel-4#resourceType_Sound> , <http://datacite.org/schema/kernel-4#resourceType_ComputationalNotebook> , <http://datacite.org/schema/kernel-4#resourceType_Event> , <http://datacite.org/schema/kernel-4#resourceType_PeerReview> , <http://datacite.org/schema/kernel-4#resourceType_ConferencePaper> , <http://datacite.org/schema/kernel-4#resourceType_Dissertation> , <http://datacite.org/schema/kernel-4#resourceType_Book> , <http://datacite.org/schema/kernel-4#resourceType_Workflow> , <http://datacite.org/schema/kernel-4#resourceType_StudyRegistration> , <http://datacite.org/schema/kernel-4#resourceType_Standard> , <http://datacite.org/schema/kernel-4#resourceType_PhysicalObject> , <http://datacite.org/schema/kernel-4#resourceType_Dataset> , <http://datacite.org/schema/kernel-4#resourceType_Project> , <http://datacite.org/schema/kernel-4#resourceType_Audiovisual> , <http://datacite.org/schema/kernel-4#resourceType_InteractiveResource> , <http://datacite.org/schema/kernel-4#resourceType_Award> , <http://datacite.org/schema/kernel-4#resourceType_Model> , <http://datacite.org/schema/kernel-4#resourceType_Text> .
+
+<http://datacite.org/schema/kernel-4#rightsIdentifierScheme>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#relationType_IsReviewedBy>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsReviewedBy" .
+
+xsd:NOTATIONDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:NOTATION ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:NOTATION
+              ] .
+
+<http://datacite.org/schema/kernel-4#resourceType_Event>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Event" .
+
+<http://datacite.org/schema/kernel-4#relationType_IsCompiledBy>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsCompiledBy" .
+
+<http://datacite.org/schema/kernel-4#alternateIdentifier>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#funderIdentifier>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#dateType_Accepted>
+      a       <http://datacite.org/schema/kernel-4#dateType> ;
+      dtype:hasValue "Accepted" .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_DOI>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "DOI" .
+
+<http://datacite.org/schema/kernel-4#nameIdentifierScheme>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#awardTitle>
+      a       owl:ObjectProperty .
+
+:Class_20
+      a       owl:Class ;
+      rdfs:subClassOf dtype:EnumeratedValue ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:NCName ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      owl:oneOf (:Class_20_default :Class_20_preserve) .
+
+<http://datacite.org/schema/kernel-4#edition>
+      a       owl:ObjectProperty .
+
+xsd:NMTOKENSDatatype
+      a       rdfs:Datatype .
+
+<http://datacite.org/schema/kernel-4#nameType_Enumeration>
+      a       dtype:Enumeration ;
+      dtype:hasValue <http://datacite.org/schema/kernel-4#nameType_Personal> , <http://datacite.org/schema/kernel-4#nameType_Organizational> .
+
+xsd:unsignedShortDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:unsignedShort ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:unsignedShort
+              ] .
+
+xsd:base64BinaryDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:base64Binary ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:base64Binary
+              ] .
+
+<http://datacite.org/schema/kernel-4#resourceType_Audiovisual>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Audiovisual" .
+
+:Class_20_preserve
+      a       :Class_20 ;
+      dtype:hasValue "preserve"^^xsd:NCName .
+
+<http://datacite.org/schema/kernel-4#awardURI>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#pointLatitude>
+      a       owl:DatatypeProperty .
+
+xsd:longDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:long ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:long
+              ] .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_CSTR>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "CSTR" .
+
+<http://datacite.org/schema/kernel-4#dates>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#Anon>
+      a       owl:Class .
+
+<http://datacite.org/schema/kernel-4#geoLocationPolygon>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#relatedItemIdentifierType>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#contributorType_HostingInstitution>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "HostingInstitution" .
+
+<http://datacite.org/schema/kernel-4#relationType_IsMetadataFor>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsMetadataFor" .
+
+<http://datacite.org/schema/kernel-4#resourceType_InteractiveResource>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "InteractiveResource" .
+
+<http://datacite.org/schema/kernel-4#resourceType_Text>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Text" .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifier>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#numberType_Article>
+      a       <http://datacite.org/schema/kernel-4#numberType> ;
+      dtype:hasValue "Article" .
+
+<http://datacite.org/schema/kernel-4#dateType_Collected>
+      a       <http://datacite.org/schema/kernel-4#dateType> ;
+      dtype:hasValue "Collected" .
+
+<http://datacite.org/schema/kernel-4#subjects>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#southBoundLatitude>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#contributorType_RegistrationAgency>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "RegistrationAgency" .
+
+<http://datacite.org/schema/kernel-4#dateType_Withdrawn>
+      a       <http://datacite.org/schema/kernel-4#dateType> ;
+      dtype:hasValue "Withdrawn" .
+
+<http://datacite.org/schema/kernel-4#classificationCode>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#contributorType_RelatedPerson>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "RelatedPerson" .
+
+<http://datacite.org/schema/kernel-4#polygonPoint>
+      a       owl:ObjectProperty .
+
+xsd:doubleDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:double ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:double
+              ] .
+
+<http://datacite.org/schema/kernel-4#titleType_Enumeration>
+      a       dtype:Enumeration ;
+      dtype:hasValue <http://datacite.org/schema/kernel-4#titleType_TranslatedTitle> , <http://datacite.org/schema/kernel-4#titleType_Other> , <http://datacite.org/schema/kernel-4#titleType_AlternativeTitle> , <http://datacite.org/schema/kernel-4#titleType_Subtitle> .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierTypeDatatype>
+      a       rdfs:Datatype ;
+      rdfs:comment "The type of the RelatedIdentifier." ;
+      rdfs:subClassOf xsd:string , <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype <http://datacite.org/schema/kernel-4#relatedIdentifierType>
+              ] ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:string
+              ] .
+
+<http://datacite.org/schema/kernel-4#issue>
+      a       owl:ObjectProperty .
+
+xsd:ENTITIESDatatype
+      a       rdfs:Datatype .
+
+<http://datacite.org/schema/kernel-4#descriptionType_TechnicalInfo>
+      a       <http://datacite.org/schema/kernel-4#descriptionType> ;
+      dtype:hasValue "TechnicalInfo" .
+
+<http://datacite.org/schema/kernel-4#contributorType_DataCollector>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "DataCollector" .
+
+xsd:nonNegativeIntegerDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:nonNegativeInteger ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:nonNegativeInteger
+              ] .
+
+<http://datacite.org/schema/kernel-4#resourceType_DataPaper>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "DataPaper" .
+
+<http://datacite.org/schema/kernel-4#familyName>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#box>
+      a       owl:Class ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#latitudeTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#northBoundLatitude>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#eastBoundLongitude>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#southBoundLatitude>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#longitudeTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#westBoundLongitude>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#longitudeTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#eastBoundLongitude>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#northBoundLatitude>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#latitudeTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#southBoundLatitude>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#westBoundLongitude>
+              ] .
+
+xsd:unsignedLongDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:unsignedLong ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:unsignedLong
+              ] .
+
+<http://datacite.org/schema/kernel-4#resourceType_Workflow>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Workflow" .
+
+xsd:gYearDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:gYear ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:gYear
+              ] .
+
+<http://datacite.org/schema/kernel-4#longitudeTypeDatatype>
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:float ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:float ;
+                owl:withRestrictions
+                        ([ xsd:minInclusive "-180"^^xsd:float
+                          ] [ xsd:maxInclusive "180"^^xsd:float
+                          ])
+              ] .
+
+<http://datacite.org/schema/kernel-4#contributorType_Sponsor>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "Sponsor" .
+
+<http://datacite.org/schema/kernel-4#contributorTypeDatatype>
+      a       rdfs:Datatype ;
+      rdfs:comment "The type of contributor of the resource." ;
+      rdfs:subClassOf xsd:string , <http://datacite.org/schema/kernel-4#contributorType> ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:string
+              ] ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype <http://datacite.org/schema/kernel-4#contributorType>
+              ] .
+
+dtype:EnumeratedValue
+      a       owl:Class .
+
+<http://datacite.org/schema/kernel-4#contributorType_ResearchGroup>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "ResearchGroup" .
+
+<http://datacite.org/schema/kernel-4#resourceTypeGeneral>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#relationType_IsPublishedIn>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsPublishedIn" .
+
+<http://datacite.org/schema/kernel-4#fundingReferences>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#resourceType_JournalArticle>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "JournalArticle" .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_EISSN>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "EISSN" .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_bibcode>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "bibcode" .
+
+<http://datacite.org/schema/kernel-4#creator>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#resourceType_Sound>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Sound" .
+
+<http://datacite.org/schema/kernel-4#titles>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#contributorType_ProjectMember>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "ProjectMember" .
+
+<http://datacite.org/schema/kernel-4#inPolygonPoint>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#contributorType_Other>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "Other" .
+
+<http://datacite.org/schema/kernel-4#resourceType_Software>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Software" .
+
+<http://datacite.org/schema/kernel-4#contributorType_DataCurator>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "DataCurator" .
+
+<http://datacite.org/schema/kernel-4#relatedItemIdentifier>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#resourceType_Other>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Other" .
+
+<http://datacite.org/schema/kernel-4#relationType_Describes>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "Describes" .
+
+<http://datacite.org/schema/kernel-4#funderIdentifierType_Enumeration>
+      a       dtype:Enumeration ;
+      dtype:hasValue <http://datacite.org/schema/kernel-4#funderIdentifierType_Other> , <http://datacite.org/schema/kernel-4#funderIdentifierType_GRID> , <http://datacite.org/schema/kernel-4#funderIdentifierType_ISNI> , <http://datacite.org/schema/kernel-4#funderIdentifierType_ROR> , <http://datacite.org/schema/kernel-4#funderIdentifierType_Crossref_Funder_ID> .
+
+<http://datacite.org/schema/kernel-4#relationTypeDatatype>
+      a       rdfs:Datatype ;
+      rdfs:comment "Description of the relationship of the resource being registered (A) and the related resource (B)." ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#relationType> , xsd:string ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:string
+              ] ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype <http://datacite.org/schema/kernel-4#relationType>
+              ] .
+
+<http://datacite.org/schema/kernel-4#rights>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#contributorType_Translator>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "Translator" .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_arXiv>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "arXiv" .
+
+xsd:unsignedByteDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:unsignedByte ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:unsignedByte
+              ] .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_URN>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "URN" .
+
+<http://datacite.org/schema/kernel-4#relatedItemType>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#contributorType_DataManager>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "DataManager" .
+
+<http://datacite.org/schema/kernel-4#schemeType>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#resourceType_Report>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Report" .
+
+<http://datacite.org/schema/kernel-4#relationType>
+      a       owl:DatatypeProperty , owl:Class ;
+      rdfs:comment "Description of the relationship of the resource being registered (A) and the related resource (B)." ;
+      rdfs:subClassOf dtype:EnumeratedValue ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      owl:oneOf (<http://datacite.org/schema/kernel-4#relationType_IsCitedBy> <http://datacite.org/schema/kernel-4#relationType_Cites> <http://datacite.org/schema/kernel-4#relationType_IsSupplementTo> <http://datacite.org/schema/kernel-4#relationType_IsSupplementedBy> <http://datacite.org/schema/kernel-4#relationType_IsContinuedBy> <http://datacite.org/schema/kernel-4#relationType_Continues> <http://datacite.org/schema/kernel-4#relationType_IsNewVersionOf> <http://datacite.org/schema/kernel-4#relationType_IsPreviousVersionOf> <http://datacite.org/schema/kernel-4#relationType_IsPartOf> <http://datacite.org/schema/kernel-4#relationType_HasPart> <http://datacite.org/schema/kernel-4#relationType_IsPublishedIn> <http://datacite.org/schema/kernel-4#relationType_IsReferencedBy> <http://datacite.org/schema/kernel-4#relationType_References> <http://datacite.org/schema/kernel-4#relationType_IsDocumentedBy> <http://datacite.org/schema/kernel-4#relationType_Documents> <http://datacite.org/schema/kernel-4#relationType_IsCompiledBy> <http://datacite.org/schema/kernel-4#relationType_Compiles> <http://datacite.org/schema/kernel-4#relationType_IsVariantFormOf> <http://datacite.org/schema/kernel-4#relationType_IsOriginalFormOf> <http://datacite.org/schema/kernel-4#relationType_IsIdenticalTo> <http://datacite.org/schema/kernel-4#relationType_HasMetadata> <http://datacite.org/schema/kernel-4#relationType_IsMetadataFor> <http://datacite.org/schema/kernel-4#relationType_Reviews> <http://datacite.org/schema/kernel-4#relationType_IsReviewedBy> <http://datacite.org/schema/kernel-4#relationType_IsDerivedFrom> <http://datacite.org/schema/kernel-4#relationType_IsSourceOf> <http://datacite.org/schema/kernel-4#relationType_Describes> <http://datacite.org/schema/kernel-4#relationType_IsDescribedBy> <http://datacite.org/schema/kernel-4#relationType_HasVersion> <http://datacite.org/schema/kernel-4#relationType_IsVersionOf> <http://datacite.org/schema/kernel-4#relationType_Requires> <http://datacite.org/schema/kernel-4#relationType_IsRequiredBy> <http://datacite.org/schema/kernel-4#relationType_Obsoletes> <http://datacite.org/schema/kernel-4#relationType_IsObsoletedBy> <http://datacite.org/schema/kernel-4#relationType_Collects> <http://datacite.org/schema/kernel-4#relationType_IsCollectedBy> <http://datacite.org/schema/kernel-4#relationType_HasTranslation> <http://datacite.org/schema/kernel-4#relationType_IsTranslationOf>) .
+
+<http://datacite.org/schema/kernel-4#publisher>
+      a       owl:ObjectProperty .
+
+xsd:negativeIntegerDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:negativeInteger ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:negativeInteger
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_Compiles>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "Compiles" .
+
+<http://datacite.org/schema/kernel-4#Anon_19>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedMetadataScheme>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedMetadataScheme>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedIdentifierType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#resourceTypeGeneral>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#relationTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relationType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:anyURI ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#relatedIdentifierTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedIdentifierType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relationType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#resourceTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#resourceTypeGeneral>
+              ] .
+
+<http://datacite.org/schema/kernel-4#contributorType_ContactPerson>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "ContactPerson" .
+
+<http://datacite.org/schema/kernel-4#contributorType_ProjectManager>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "ProjectManager" .
+
+<http://datacite.org/schema/kernel-4#geoLocationPoint>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#descriptions>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#dateType_Coverage>
+      a       <http://datacite.org/schema/kernel-4#dateType> ;
+      dtype:hasValue "Coverage" .
+
+<http://datacite.org/schema/kernel-4#resourceType_Instrument>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Instrument" .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_URL>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "URL" .
+
+<http://datacite.org/schema/kernel-4#Anon_18>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_19> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedIdentifier>
+              ] .
+
+<http://datacite.org/schema/kernel-4#point>
+      a       owl:Class ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#longitudeTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#pointLongitude>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#pointLatitude>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#pointLongitude>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#latitudeTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#pointLatitude>
+              ] .
+
+<http://datacite.org/schema/kernel-4#descriptionType_Other>
+      a       <http://datacite.org/schema/kernel-4#descriptionType> ;
+      dtype:hasValue "Other" .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifiers>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#resourceType_StudyRegistration>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "StudyRegistration" .
+
+<http://datacite.org/schema/kernel-4#Anon_17>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#alternateIdentifierType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#alternateIdentifierType>
+              ] .
+
+<http://datacite.org/schema/kernel-4#rightsList>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#descriptionType_TableOfContents>
+      a       <http://datacite.org/schema/kernel-4#descriptionType> ;
+      dtype:hasValue "TableOfContents" .
+
+<http://datacite.org/schema/kernel-4#identifier>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#Anon_16>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#alternateIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_17> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#alternateIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#alternateIdentifier>
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_IsSourceOf>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsSourceOf" .
+
+<http://datacite.org/schema/kernel-4#Anon_15>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#dateInformation>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#dateTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#dateType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#dateType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#dateInformation>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] .
+
+<http://datacite.org/schema/kernel-4#funderName>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#resourceType_Collection>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Collection" .
+
+<http://datacite.org/schema/kernel-4#valueURI>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#titleType_Other>
+      a       <http://datacite.org/schema/kernel-4#titleType> ;
+      dtype:hasValue "Other" .
+
+<http://datacite.org/schema/kernel-4#resourceType_ComputationalNotebook>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "ComputationalNotebook" .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_Enumeration>
+      a       dtype:Enumeration ;
+      dtype:hasValue <http://datacite.org/schema/kernel-4#relatedIdentifierType_URN> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_LISSN> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_ARK> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_ISTC> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_RRID> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_CSTR> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_arXiv> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_EAN13> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_IGSN> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_ISSN> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_Handle> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_URL> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_UPC> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_PURL> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_w3id> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_DOI> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_EISSN> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_PMID> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_bibcode> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_LSID> , <http://datacite.org/schema/kernel-4#relatedIdentifierType_ISBN> .
+
+<http://datacite.org/schema/kernel-4#Anon_39>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#nameTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:language ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] .
+
+<http://datacite.org/schema/kernel-4#Anon_14>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#date>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_15> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#date>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#date>
+              ] .
+
+<http://datacite.org/schema/kernel-4#resourceType_Journal>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Journal" .
+
+xsd:NameDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:Name ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:Name
+              ] .
+
+<http://datacite.org/schema/kernel-4#Anon_38>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#familyName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#givenName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_39> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#creatorName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#familyName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#creatorName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#givenName>
+              ] .
+
+<http://datacite.org/schema/kernel-4#Anon_13>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#nonemptycontentStringTypeDatatype> ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#nameTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:language ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] .
+
+<http://datacite.org/schema/kernel-4#Anon_37>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#creator>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_38> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#creator>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#creator>
+              ] .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_UPC>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "UPC" .
+
+<http://datacite.org/schema/kernel-4#givenName>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_w3id>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "w3id" .
+
+<http://datacite.org/schema/kernel-4#size>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#descriptionTypeDatatype>
+      a       rdfs:Datatype ;
+      rdfs:comment "The type of the description." ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#descriptionType> , xsd:string ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:string
+              ] ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype <http://datacite.org/schema/kernel-4#descriptionType>
+              ] .
+
+<http://datacite.org/schema/kernel-4#lastPage>
+      a       owl:ObjectProperty .
+
+xsd:intDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:int ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:int
+              ] .
+
+<http://datacite.org/schema/kernel-4#Anon_12>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#affiliation>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#familyName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_13> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributorName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#contributorTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributorType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#affiliation>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#givenName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributorName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#givenName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#familyName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#nameIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributorType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#affiliation>
+              ] .
+
+<http://datacite.org/schema/kernel-4#Anon_36>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#relatedIdentifierTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedItemIdentifierType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedItemIdentifierType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:anyURI ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedMetadataScheme>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedMetadataScheme>
+              ] .
+
+<http://datacite.org/schema/kernel-4#subject>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#resourceType_Service>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Service" .
+
+<http://datacite.org/schema/kernel-4#nameType_Personal>
+      a       <http://datacite.org/schema/kernel-4#nameType> ;
+      dtype:hasValue "Personal" .
+
+:textContent
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#relationType_IsVersionOf>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsVersionOf" .
+
+<http://datacite.org/schema/kernel-4#Anon_35>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#firstPage>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_36> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedItemIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#volume>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedItemType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_40> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#titles>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#issue>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#resourceTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedItemType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#nullDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#publicationYear>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#issue>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#edition>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#edition>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_43> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributors>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_42> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#number>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#publisher>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#firstPage>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedItemIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributors>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relationType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lastPage>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lastPage>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#creators>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_37> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#creators>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#titles>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#relationTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relationType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#volume>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#publisher>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#number>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#publicationYear>
+              ] .
+
+xsd:textContent
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#Anon_11>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributor>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributor>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_12> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#contributor>
+              ] .
+
+<http://datacite.org/schema/kernel-4#nameTypeDatatype>
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:string , <http://datacite.org/schema/kernel-4#nameType> ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:string
+              ] ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype <http://datacite.org/schema/kernel-4#nameType>
+              ] .
+
+<http://datacite.org/schema/kernel-4#numberType_Report>
+      a       <http://datacite.org/schema/kernel-4#numberType> ;
+      dtype:hasValue "Report" .
+
+<http://datacite.org/schema/kernel-4#contributorType_WorkPackageLeader>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "WorkPackageLeader" .
+
+<http://datacite.org/schema/kernel-4#dateType_Issued>
+      a       <http://datacite.org/schema/kernel-4#dateType> ;
+      dtype:hasValue "Issued" .
+
+<http://datacite.org/schema/kernel-4#westBoundLongitude>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#Anon_34>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedItem>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_35> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedItem>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#relatedItem>
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_IsTranslationOf>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsTranslationOf" .
+
+<http://datacite.org/schema/kernel-4#Anon_10>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#subjectScheme>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:anyURI ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#classificationCode>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:anyURI ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#subjectScheme>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#valueURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:anyURI ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#valueURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:language ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#lang>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#classificationCode>
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_IsRequiredBy>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsRequiredBy" .
+
+<http://datacite.org/schema/kernel-4#geoLocation>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_EAN13>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "EAN13" .
+
+<http://datacite.org/schema/kernel-4#relationType_IsOriginalFormOf>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsOriginalFormOf" .
+
+<http://datacite.org/schema/kernel-4#eastBoundLongitude>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#Anon_33>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#awardURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:anyURI ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#awardURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] .
+
+xsd:durationDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:duration ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:duration
+              ] .
+
+xsd:IDDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:ID ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:ID
+              ] .
+
+<http://datacite.org/schema/kernel-4#relationType_Enumeration>
+      a       dtype:Enumeration ;
+      dtype:hasValue <http://datacite.org/schema/kernel-4#relationType_IsIdenticalTo> , <http://datacite.org/schema/kernel-4#relationType_Requires> , <http://datacite.org/schema/kernel-4#relationType_References> , <http://datacite.org/schema/kernel-4#relationType_IsVariantFormOf> , <http://datacite.org/schema/kernel-4#relationType_IsOriginalFormOf> , <http://datacite.org/schema/kernel-4#relationType_IsPublishedIn> , <http://datacite.org/schema/kernel-4#relationType_Obsoletes> , <http://datacite.org/schema/kernel-4#relationType_IsCollectedBy> , <http://datacite.org/schema/kernel-4#relationType_IsSupplementedBy> , <http://datacite.org/schema/kernel-4#relationType_HasVersion> , <http://datacite.org/schema/kernel-4#relationType_IsSourceOf> , <http://datacite.org/schema/kernel-4#relationType_IsVersionOf> , <http://datacite.org/schema/kernel-4#relationType_IsDocumentedBy> , <http://datacite.org/schema/kernel-4#relationType_Describes> , <http://datacite.org/schema/kernel-4#relationType_IsReferencedBy> , <http://datacite.org/schema/kernel-4#relationType_IsDerivedFrom> , <http://datacite.org/schema/kernel-4#relationType_IsReviewedBy> , <http://datacite.org/schema/kernel-4#relationType_IsSupplementTo> , <http://datacite.org/schema/kernel-4#relationType_Reviews> , <http://datacite.org/schema/kernel-4#relationType_Cites> , <http://datacite.org/schema/kernel-4#relationType_IsCitedBy> , <http://datacite.org/schema/kernel-4#relationType_IsPartOf> , <http://datacite.org/schema/kernel-4#relationType_HasPart> , <http://datacite.org/schema/kernel-4#relationType_IsCompiledBy> , <http://datacite.org/schema/kernel-4#relationType_IsDescribedBy> , <http://datacite.org/schema/kernel-4#relationType_Compiles> , <http://datacite.org/schema/kernel-4#relationType_HasTranslation> , <http://datacite.org/schema/kernel-4#relationType_IsContinuedBy> , <http://datacite.org/schema/kernel-4#relationType_IsObsoletedBy> , <http://datacite.org/schema/kernel-4#relationType_Documents> , <http://datacite.org/schema/kernel-4#relationType_Continues> , <http://datacite.org/schema/kernel-4#relationType_IsTranslationOf> , <http://datacite.org/schema/kernel-4#relationType_Collects> , <http://datacite.org/schema/kernel-4#relationType_IsNewVersionOf> , <http://datacite.org/schema/kernel-4#relationType_HasMetadata> , <http://datacite.org/schema/kernel-4#relationType_IsRequiredBy> , <http://datacite.org/schema/kernel-4#relationType_IsMetadataFor> , <http://datacite.org/schema/kernel-4#relationType_IsPreviousVersionOf> .
+
+<http://datacite.org/schema/kernel-4#relationType_Collects>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "Collects" .
+
+<http://datacite.org/schema/kernel-4#Anon_32>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:anyURI ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#funderIdentifierType>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#schemeURI>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty dtype:hasValue
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#funderIdentifierTypeDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#funderIdentifierType>
+              ] .
+
+<http://datacite.org/schema/kernel-4#publisherIdentifier>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#resourceType_Award>
+      a       <http://datacite.org/schema/kernel-4#resourceType> ;
+      dtype:hasValue "Award" .
+
+<http://datacite.org/schema/kernel-4#nonemptycontentStringTypeDatatype>
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:string ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:string ;
+                owl:withRestrictions
+                        ([ xsd:minLength "1"
+                          ])
+              ] .
+
+xsd:floatDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:float ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:float
+              ] .
+
+<http://datacite.org/schema/kernel-4#Anon_31>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_33> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#awardNumber>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#funderName>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#funderIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#awardTitle>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_32> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#funderIdentifier>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#awardNumber>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom owl:Thing ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#awardTitle>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#nullDatatype> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#funderName>
+              ] .
+
+<http://datacite.org/schema/kernel-4#rightsIdentifier>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#affiliationIdentifier>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#relationType_IsPartOf>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsPartOf" .
+
+<http://datacite.org/schema/kernel-4#identifierType>
+      a       owl:DatatypeProperty .
+
+<http://datacite.org/schema/kernel-4#relationType_IsNewVersionOf>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsNewVersionOf" .
+
+<http://datacite.org/schema/kernel-4#Anon_30>
+      a       owl:Class ;
+      rdfs:subClassOf <http://datacite.org/schema/kernel-4#Anon> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minCardinality "0"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#fundingReference>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxCardinality "2147483647"^^xsd:int ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#fundingReference>
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:allValuesFrom <http://datacite.org/schema/kernel-4#Anon_31> ;
+                owl:onProperty <http://datacite.org/schema/kernel-4#fundingReference>
+              ] .
+
+<http://datacite.org/schema/kernel-4#schemeURI>
+      a       owl:DatatypeProperty .
+
+xsd:dateTimeDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:dateTime ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:dateTime
+              ] .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_PMID>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "PMID" .
+
+<http://datacite.org/schema/kernel-4#relatedIdentifierType_ARK>
+      a       <http://datacite.org/schema/kernel-4#relatedIdentifierType> ;
+      dtype:hasValue "ARK" .
+
+<http://datacite.org/schema/kernel-4#number>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#contributor>
+      a       owl:ObjectProperty .
+
+<http://datacite.org/schema/kernel-4#relationType_Obsoletes>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "Obsoletes" .
+
+<http://datacite.org/schema/kernel-4#funderIdentifierType_Crossref_Funder_ID>
+      a       <http://datacite.org/schema/kernel-4#funderIdentifierType> ;
+      dtype:hasValue "Crossref Funder ID" .
+
+xsd:decimalDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:decimal ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:decimal
+              ] .
+
+<http://datacite.org/schema/kernel-4#contributorType_Enumeration>
+      a       dtype:Enumeration ;
+      dtype:hasValue <http://datacite.org/schema/kernel-4#contributorType_Editor> , <http://datacite.org/schema/kernel-4#contributorType_Translator> , <http://datacite.org/schema/kernel-4#contributorType_Other> , <http://datacite.org/schema/kernel-4#contributorType_DataCurator> , <http://datacite.org/schema/kernel-4#contributorType_DataManager> , <http://datacite.org/schema/kernel-4#contributorType_RegistrationAuthority> , <http://datacite.org/schema/kernel-4#contributorType_RelatedPerson> , <http://datacite.org/schema/kernel-4#contributorType_DataCollector> , <http://datacite.org/schema/kernel-4#contributorType_RightsHolder> , <http://datacite.org/schema/kernel-4#contributorType_Distributor> , <http://datacite.org/schema/kernel-4#contributorType_ContactPerson> , <http://datacite.org/schema/kernel-4#contributorType_HostingInstitution> , <http://datacite.org/schema/kernel-4#contributorType_Producer> , <http://datacite.org/schema/kernel-4#contributorType_RegistrationAgency> , <http://datacite.org/schema/kernel-4#contributorType_ProjectManager> , <http://datacite.org/schema/kernel-4#contributorType_Supervisor> , <http://datacite.org/schema/kernel-4#contributorType_Sponsor> , <http://datacite.org/schema/kernel-4#contributorType_ProjectLeader> , <http://datacite.org/schema/kernel-4#contributorType_ProjectMember> , <http://datacite.org/schema/kernel-4#contributorType_WorkPackageLeader> , <http://datacite.org/schema/kernel-4#contributorType_Researcher> , <http://datacite.org/schema/kernel-4#contributorType_ResearchGroup> .
+
+<http://datacite.org/schema/kernel-4#contributorType_Editor>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "Editor" .
+
+<http://datacite.org/schema/kernel-4#relationType_IsDescribedBy>
+      a       <http://datacite.org/schema/kernel-4#relationType> ;
+      dtype:hasValue "IsDescribedBy" .
+
+<http://datacite.org/schema/kernel-4#descriptionType_SeriesInformation>
+      a       <http://datacite.org/schema/kernel-4#descriptionType> ;
+      dtype:hasValue "SeriesInformation" .
+
+xsd:timeDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:time ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:time
+              ] .
+
+<http://datacite.org/schema/kernel-4#format>
+      a       owl:DatatypeProperty .
+
+xsd:stringDatatype
+      a       rdfs:Datatype ;
+      rdfs:subClassOf xsd:string ;
+      owl:equivalentClass
+              [ a       rdfs:Datatype ;
+                owl:onDatatype xsd:string
+              ] .
+
+<http://datacite.org/schema/kernel-4#contributorType_Supervisor>
+      a       <http://datacite.org/schema/kernel-4#contributorType> ;
+      dtype:hasValue "Supervisor" .
