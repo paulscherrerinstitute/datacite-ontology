@@ -6,17 +6,18 @@ info:
   description: >
     Open Research Data | Measure 2 | API 01<br><br>
     Interoperability between Electronic Laboratory Notebooks and Data Repositories is implemented using <a href="https://www.researchobject.org/ro-crate/"> RO-Crate</a>.<br><br>
-    ⚠️ The schemas provided do not reflect the exact structure of the RO-Crate. The JSON-LD docuement should be flattened.
+    ⚠️ The schemas provided do not reflect the exact structure of the RO-Crate. The JSON-LD document should be flattened.
 
 tags:
-- name: ro-crate
+  - name: ro-crate
 
 paths:
-  /api/v1/ro-crate:
+  /api/v1/ro-crate/import:
     post:
       tags:
-      - ro-crate
+        - ro-crate
       requestBody:
+        description: <a href="https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor">RO-Crate Metadata File Descriptor</a>
         content:
           application/ld+json:
             schema:
@@ -55,17 +56,19 @@ paths:
           description: Unacceptable content
         "500":
           description: Internal server error
-      summary: Import RO Crate
-  /api/v1/ro-crate/publications/{doi}:
-    get:
+      summary: Import RO-Crate
+  /api/v1/ro-crate/export:
+    post:
       tags:
-      - ro-crate
-      parameters:
-      - name: doi
-        in: path
-        required: true
-        schema:
-          type: string
+        - ro-crate
+      requestBody:
+        description: List of identifiers
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
       responses:
         "200":
           description: OK
@@ -87,7 +90,7 @@ paths:
           description: Unacceptable content
         "500":
           description: Internal server error
-      summary: Export a Publication from a DOI to a RO-Crate
+      summary: Export resources with the given identifiers to a RO-Crate
 
 # https://github.com/json-ld/json-ld.org/blob/main/schemas/jsonld-schema.json
 components:
@@ -144,12 +147,12 @@ components:
       properties:
         "@type":
           type: string
-          enum: 
-          - "Dataset"
+          enum:
+            - "Dataset"
         "@id":
           type: string
-          enum: 
-          - "./"
+          enum:
+            - "./"
         name:
           type: string
         description:
@@ -201,7 +204,7 @@ components:
         title:
           type: string
         publisher:
-          affiliation: 
+          affiliation:
           $ref: "#/components/schemas/Organization"
         datePublished:
           type: string
@@ -238,13 +241,13 @@ components:
           type: string
         "@id":
           type: string
-        name: 
+        name:
           type: string
-        givenName: 
+        givenName:
           type: string
-        familyName: 
+        familyName:
           type: string
-        affiliation: 
+        affiliation:
           $ref: "#/components/schemas/Organization"
       required:
         - "@type"
