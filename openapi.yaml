@@ -22,39 +22,36 @@ paths:
         content:
           application/ld+json:
             schema:
-              type: object
-              properties:
-                "@context":
-                  type:
-                    - string
-                    - array
-                    - object
-                    - "null"
-                "@graph":
-                  type: array
-                  minItems: 2
-                  items:
-                    oneOf:
-                      - $ref: "#/components/schemas/RoCrateMetadata"
-                      - $ref: "#/components/schemas/RootDataset"
-                      - $ref: "#/components/schemas/Publication"
-                      - $ref: "#/components/schemas/JsonLDEntity"
-              required:
-                - "@context"
-                - "@graph"
+              $ref: "#/components/schemas/RoCrate"
           application/zip:
             schema:
               type: string
               format: binary
       responses:
         "201":
-          description: Created
+          description: Map of the JSON-LD identifiers and associated system identifiers created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationReport"
+              examples:
+                Valid:
+                  $ref: "#/components/examples/validCrateResponse"
         "401":
           description: Unauthorized
         "403":
           description: Forbidden
         "422":
           description: Unacceptable content
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationReport"
+              examples:
+                Property error:
+                  $ref: "#/components/examples/propertyErrorCrateExample"
+                No entity found:
+                  $ref: "#/components/examples/emptyCrateExample"
         "500":
           description: Internal server error
       summary: Import RO-Crate
@@ -93,6 +90,38 @@ paths:
           description: Internal server error
       summary: Export resources with the given identifiers to a RO-Crate
 
+  /api/v1/ro-crate/validate:
+    post:
+      tags:
+        - ro-crate
+      requestBody:
+        description: <a href="https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor">RO-Crate Metadata File Descriptor</a>
+        content:
+          application/ld+json:
+            schema:
+              $ref: "#/components/schemas/RoCrate"
+          application/zip:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "200":
+          description: Result of the validation process
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationReport"
+              examples:
+                Valid:
+                  $ref: "#/components/examples/validCrateResponse"
+                Property errors:
+                  $ref: "#/components/examples/propertyErrorCrateExample"
+                No entity found:
+                  $ref: "#/components/examples/emptyCrateExample"
+        "500":
+          description: Internal server error
+      summary: Validates a RO-Crate
+
 # https://github.com/json-ld/json-ld.org/blob/main/schemas/jsonld-schema.json
 components:
   schemas:
@@ -113,6 +142,8 @@ components:
               - $ref: "#/components/schemas/RoCrateMetadata"
               - $ref: "#/components/schemas/RootDataset"
               - $ref: "#/components/schemas/JsonLDEntity"
+              - $ref: "#/components/schemas/Publication"
+              - $ref: "#/components/schemas/Dataset"
 
     RoCrateMetadata:
       type: object
@@ -185,7 +216,7 @@ components:
         dateCreated:
           type: string
           format: date-time
-      requiredProperties:
+      required:
         - "@id"
         - "@type"
         - name
@@ -205,7 +236,6 @@ components:
         title:
           type: string
         publisher:
-          affiliation:
           $ref: "#/components/schemas/Organization"
         datePublished:
           type: string
@@ -219,11 +249,11 @@ components:
           properties:
             "@id":
               type: string
-          requiredProperties:
+          required:
             - "@id"
         description:
           type: string
-      requiredProperties:
+      required:
         - "@id"
         - "@type"
         - identifier
@@ -286,3 +316,94 @@ components:
       required:
         - "@type"
         - "@id"
+
+    ValidationReport:
+      type: object
+      required:
+        - isValid
+      properties:
+        isValid:
+          type: boolean
+      if:
+        properties:
+          isValid:
+            const: true
+      then:
+        properties:
+          entities:
+            type: array
+            items:
+              type: string
+        required:
+          - entities
+      else:
+        properties:
+          errors:
+            oneOf:
+              - $ref: "#/components/schemas/NoEntityFound"
+              - type: array
+                items:
+                  $ref: "#/components/schemas/ValidationError"
+
+        required:
+          - errors
+
+    ValidationError:
+      oneOf:
+        - $ref: "#/components/schemas/PropertyError"
+        - $ref: "#/components/schemas/MissingDataError"
+
+    NoEntityFound:
+      type: string
+      const: "No suitable entity found in the graph"
+
+    MissingDataError:
+      type: object
+      properties:
+        "type":
+          type: string
+          enum:
+            - File
+            - Dataset
+        path:
+          type: string
+      required:
+        - type
+        - path
+
+    PropertyError:
+      type: object
+      properties:
+        nodeId:
+          type: string
+        property:
+          type: string
+        message:
+          type: string
+      required:
+        - nodeId
+        - property
+        - message
+
+  examples:
+    validCrateResponse:
+      value:
+        entities:
+          publication-01: "10.16907/808de0df-a9d3-4698-8e9f-d6e091516650"
+          dataset-01: "20.500.11935/44e91ab9-9ed5-4742-8a73-7834fbd0535e"
+
+    emptyCrateExample:
+      value:
+        isValid: false
+        errors: "No suitable entity found in the graph"
+
+    propertyErrorCrateExample:
+      value:
+        isValid: false
+        errors:
+          - nodeId: "./"
+            property: "http://schema.org/datePublished"
+            message: "Cardinality error: expected exactly 1 value"
+          - nodeId: "publication_1234"
+            property: "http://schema.org/creator"
+            message: "Type error: expected 'creator-01' to be a 'http://schema.org/Person' or a 'http://schema.org/Organization' but is a 'http://schema.org/Dataset'"
