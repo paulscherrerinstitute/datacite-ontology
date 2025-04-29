@@ -317,7 +317,7 @@ components:
 
     ImportResponse:
       type: object
-      description: Map of JSON-LD identifiers and their corresponding system specific identifiers
+      description: Map of JSON-LD identifiers (key) and their corresponding system specific identifiers (value)
       additionalProperties:
         type: string
 
@@ -360,16 +360,20 @@ components:
     NoEntityFound:
       type: string
       const: "No suitable entity found in the graph"
+      description: The system could not identify any data to import
 
     MissingDataError:
       type: object
+      description: A file or directory was referenced in the ro-crate-metadata.json but is not present in the zip archive. (Can only occur when the RO-Crate is submitted as a zip)
       properties:
         "type":
           type: string
+          description: Type of the missing data in RO-Crate vocabulary
           enum:
             - File
             - Dataset
         path:
+          description: Path of the missing data inside the zip archive
           type: string
       required:
         - type
