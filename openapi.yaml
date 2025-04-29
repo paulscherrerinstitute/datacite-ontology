@@ -177,8 +177,6 @@ components:
               - $ref: "#/components/schemas/RoCrateMetadata"
               - $ref: "#/components/schemas/RootDataset"
               - $ref: "#/components/schemas/JsonLDEntity"
-              - $ref: "#/components/schemas/Publication"
-              - $ref: "#/components/schemas/Dataset"
 
     RoCrateMetadata:
       type: object
