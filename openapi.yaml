@@ -119,6 +119,43 @@ paths:
         "500":
           description: Internal server error
       summary: Validates a RO-Crate
+  /api/v1/publication/validate:
+    post:
+      tags:
+        - scicat
+      requestBody:
+        description: A single Publication in _unflattened_ form.
+        content:
+          application/ld+json:
+            schema:
+              $ref: "#/components/schemas/Publication"
+      responses:
+        "200":
+          description: Result of the validation process
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isValid:
+                    type: boolean
+                if:
+                  properties:
+                    isValid:
+                      const: false
+                then:
+                  properties:
+                    errors:
+                      type: array
+                      items:
+                        $ref: "#/components/schemas/PropertyError"
+                  required:
+                    - errors
+        "500":
+          description: Internal server error
+        "501":
+          description: Not implemented
+      summary: Validates a Publication object. The Publication should be flattened before including it in a RO-Crate
 
 # https://github.com/json-ld/json-ld.org/blob/main/schemas/jsonld-schema.json
 components:
