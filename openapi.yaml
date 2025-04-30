@@ -378,11 +378,13 @@ components:
       else:
         properties:
           errors:
-            oneOf:
-              - $ref: "#/components/schemas/NoEntityFound"
-              - type: array
-                items:
-                  $ref: "#/components/schemas/ValidationError"
+            type: array
+            items:
+              oneOf:
+                - $ref: "#/components/schemas/NoEntityFound"
+                - $ref: "#/components/schemas/ValidationError"
+              discriminator:
+                propertyName: errorType
 
         required:
           - errors
@@ -393,14 +395,23 @@ components:
         - $ref: "#/components/schemas/MissingDataError"
 
     NoEntityFound:
-      type: string
-      const: "No suitable entity found in the graph"
-      description: The system could not identify any data to import
+      type: object
+      properties:
+        errorType:
+          type: string
+          const: "NoEntityFound"
+        message:
+          type: string
+          const: "No suitable entity found in the graph"
+          description: The system could not identify any data to import
 
     MissingDataError:
       type: object
       description: A file or directory was referenced in the ro-crate-metadata.json but is not present in the zip archive. (Can only occur when the RO-Crate is submitted as a zip)
       properties:
+        errorType:
+          type: string
+          const: "MissingDataError"
         "type":
           type: string
           description: Type of the missing data in RO-Crate vocabulary
@@ -417,6 +428,9 @@ components:
     PropertyError:
       type: object
       properties:
+        errorType:
+          type: string
+          const: "PropertyError"
         nodeId:
           type: string
         property:
@@ -439,19 +453,24 @@ components:
     emptyCrateExample:
       value:
         isValid: false
-        errors: "No suitable entity found in the graph"
+        errors:
+          - errorType: "NoEntityFound"
+            message: "No suitable entity found in the graph"
 
     validationErrorExample:
       value:
         isValid: false
         errors:
-          - nodeId: "./"
+          - errorType: PropertyError
+            nodeId: "./"
             property: "http://schema.org/datePublished"
             message: "Cardinality error: expected exactly 1 value"
-          - nodeId: "publication_1234"
+          - errorType: PropertyError
+            nodeId: "publication_1234"
             property: "http://schema.org/creator"
             message: "Type error: expected 'creator-01' to be a 'http://schema.org/Person' or a 'http://schema.org/Organization' but is a 'http://schema.org/Dataset'"
-          - type: File
+          - errorType: MissingDataError
+            type: File
             path: "./dataset/file-1"
 
     importResponseExample:
