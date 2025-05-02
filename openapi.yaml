@@ -29,8 +29,10 @@ paths:
           name: options
           required: false
           description: System specific options
-          schema:
-            type: object
+          content:
+            application/json:
+              schema:
+                type: object
           examples:
             Default:
               value:
@@ -97,8 +99,10 @@ paths:
           name: options
           required: false
           description: System specific options
-          schema:
-            type: object
+          content:
+            application/json:
+              schema:
+                type: object
           examples:
             Default:
               value:
@@ -173,8 +177,10 @@ paths:
           name: options
           required: false
           description: System specific options
-          schema:
-            type: object
+          content:
+            application/json:
+              schema:
+                type: object
           examples:
             Default:
               value:
