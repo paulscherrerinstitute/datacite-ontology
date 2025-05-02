@@ -5,8 +5,8 @@ info:
   version: 1.0.0
   description: >
     Open Research Data | Measure 2 | API 01<br><br>
-    Interoperability between Electronic Laboratory Notebooks and Data Repositories is implemented using <a href="https://www.researchobject.org/ro-crate/"> RO-Crate</a>.<br>
-    RO-Crates consumed and produced by this API must comply with this <a href="https://sissource.ethz.ch/sispub/ro-crate/-/blob/main/interoperability/0.1.x/spec.md">profile</a>.<br><br>
+    Interoperability between Electronic Laboratory Notebooks and Data Repositories is implemented using [RO-Crate](https://www.researchobject.org/ro-crate/).<br>
+    RO-Crates consumed and produced by this API must comply with this [profile](https://sissource.ethz.ch/sispub/ro-crate/-/blob/main/interoperability/0.1.x/spec.md).<br><br>
     ⚠️ The schemas provided do not reflect the exact structure of the RO-Crate. The JSON-LD document should be flattened.
 
 tags:
@@ -20,7 +20,7 @@ paths:
       summary: Import a RO-Crate
       description: |
         Import the metadata contained in the
-        <a href="https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor">RO-Crate Metadata File Descriptor</a>
+        [RO-Crate Metadata File Descriptor](https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor)
         to the system.
 
         When the 'Content-Type' header is 'application/zip', the data is also imported.
@@ -29,7 +29,7 @@ paths:
           The RO-Crate to import.
 
           Depending on the 'Content-Type' header, the payload can either be:
-          - a <a href="https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor">RO-Crate Metadata File Descriptor</a> for 'application/ld+json'
+          - a [RO-Crate Metadata File Descriptor](https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor) for 'application/ld+json'
           - a zipped RO-Crate for 'application/zip'
         content:
           application/ld+json:
@@ -78,7 +78,7 @@ paths:
         When the 'Accept' header is 'application/zip', the data is also exported
         either in the produced zip file or as remote URLs referenced in the RO-Crate metadata descriptor.
       requestBody:
-        description: List of Digital Object Identifiers (<a href="https://www.doi.org/">DOIs</a>) or system specific identifiers
+        description: List of Digital Object Identifiers [DOIs](https://www.doi.org) or system specific identifiers
         content:
           application/json:
             schema:
@@ -128,7 +128,7 @@ paths:
           The RO-Crate to validate.
 
           Depending on the 'Content-Type' header, the payload can either be:
-          - a <a href="https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor">RO-Crate Metadata File Descriptor</a> for 'application/ld+json'
+          - a [RO-Crate Metadata File Descriptor](https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor) for 'application/ld+json'
           - a zipped RO-Crate for 'application/zip'
         content:
           application/ld+json:
