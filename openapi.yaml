@@ -40,7 +40,7 @@ paths:
             schema:
               type: string
               format: binary
-          mulitpart/form-data:
+          multipart/form-data:
             schema:
               type: object
               properties:
@@ -109,7 +109,7 @@ paths:
                 $ref: "#/components/examples/doiList"
               System specific identifiers:
                 $ref: "#/components/examples/idList"
-          mulitpart/form-data:
+          multipart/form-data:
             schema:
               type: object
               properties:
@@ -174,7 +174,7 @@ paths:
             schema:
               type: string
               format: binary
-          mulitpart/form-data:
+          multipart/form-data:
             schema:
               type: object
               properties:
