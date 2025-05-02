@@ -24,6 +24,21 @@ paths:
         to the system.
 
         When the 'Content-Type' header is 'application/zip', the data is also imported.
+      parameters:
+        - in: query
+          name: options
+          required: false
+          description: System specific options
+          schema:
+            type: object
+          examples:
+            Default:
+              value:
+            Example Options:
+              value:
+                timezone: Europe/Zurich
+                ifExist: UPDATE
+                ignoreErrors: true
       requestBody:
         description: |
           The RO-Crate to import.
@@ -77,6 +92,21 @@ paths:
 
         When the 'Accept' header is 'application/zip', the data is also exported
         either in the produced zip file or as remote URLs referenced in the RO-Crate metadata descriptor.
+      parameters:
+        - in: query
+          name: options
+          required: false
+          description: System specific options
+          schema:
+            type: object
+          examples:
+            Default:
+              value:
+            Example Options:
+              value:
+                timezone: Europe/Zurich
+                ifExist: UPDATE
+                ignoreErrors: true
       requestBody:
         description: List of Digital Object Identifiers [DOIs](https://www.doi.org) or system specific identifiers
         content:
@@ -138,6 +168,21 @@ paths:
             schema:
               type: string
               format: binary
+      parameters:
+        - in: query
+          name: options
+          required: false
+          description: System specific options
+          schema:
+            type: object
+          examples:
+            Default:
+              value:
+            Example Options:
+              value:
+                timezone: Europe/Zurich
+                ifExist: UPDATE
+                ignoreErrors: true
       responses:
         "200":
           description: Result of the validation process
