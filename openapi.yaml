@@ -2,7 +2,7 @@
 openapi: 3.1.0
 info:
   title: RO-Crate API
-  version: 1.0.0-SNAPSHOT
+  version: 1.0.0
   description: >
     Open Research Data | Measure 2 | API 01<br><br>
     Interoperability between Electronic Laboratory Notebooks and Data Repositories is implemented using <a href="https://www.researchobject.org/ro-crate/"> RO-Crate</a>.<br>
@@ -17,8 +17,20 @@ paths:
     post:
       tags:
         - ro-crate
+      summary: Import a RO-Crate
+      description: |
+        Import the metadata contained in the
+        <a href="https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor">RO-Crate Metadata File Descriptor</a>
+        to the system.
+
+        When the 'Content-Type' header is 'application/zip', the data is also imported.
       requestBody:
-        description: <a href="https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor">RO-Crate Metadata File Descriptor</a>
+        description: |
+          The RO-Crate to import.
+
+          Depending on the 'Content-Type' header, the payload can either be:
+          - a <a href="https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor">RO-Crate Metadata File Descriptor</a> for 'application/ld+json'
+          - a zipped RO-Crate for 'application/zip'
         content:
           application/ld+json:
             schema:
@@ -54,19 +66,30 @@ paths:
                   $ref: "#/components/examples/emptyCrateExample"
         "500":
           description: Internal server error
-      summary: Import RO-Crate
+
   /api/v1/ro-crate/export:
     post:
       tags:
         - ro-crate
+      summary: Export resources to a RO-Crate
+      description: |
+        Export resources from the system to a RO-Crate.
+
+        When the 'Accept' header is 'application/zip', the data is also exported
+        either in the produced zip file or as remote URLs referenced in the RO-Crate metadata descriptor.
       requestBody:
-        description: List of identifiers
+        description: List of Digital Object Identifiers (<a href="https://www.doi.org/">DOIs</a>) or system specific identifiers
         content:
           application/json:
             schema:
               type: array
               items:
                 type: string
+            examples:
+              List DOIs:
+                $ref: "#/components/examples/doiList"
+              System specific identifiers:
+                $ref: "#/components/examples/idList"
       responses:
         "200":
           description: OK
@@ -86,14 +109,27 @@ paths:
           description: Not found
         "500":
           description: Internal server error
-      summary: Export resources with the given identifiers to a RO-Crate
 
   /api/v1/ro-crate/validate:
     post:
       tags:
         - ro-crate
+      summary: Validate a RO-Crate
+      description: |
+        Checks if the system can import a given RO-Crate.
+
+        Depending on the flexibility of the system, the validation process can differ, the metadata can be checked against:
+        - the schema bundled in the RO-Crate
+        - a fixed list of schemas that the system can interpret
+
+        When the 'Content-Type' header is 'application/zip', the presence of the data in the zip archive is also checked.
       requestBody:
-        description: <a href="https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor">RO-Crate Metadata File Descriptor</a>
+        description: |
+          The RO-Crate to validate.
+
+          Depending on the 'Content-Type' header, the payload can either be:
+          - a <a href="https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor">RO-Crate Metadata File Descriptor</a> for 'application/ld+json'
+          - a zipped RO-Crate for 'application/zip'
         content:
           application/ld+json:
             schema:
@@ -118,7 +154,7 @@ paths:
                   $ref: "#/components/examples/emptyCrateExample"
         "500":
           description: Internal server error
-      summary: Validates a RO-Crate
+
   /api/v1/publication/validate:
     post:
       tags:
@@ -477,3 +513,14 @@ components:
       value:
         publication-01: "10.16907/808de0df-a9d3-4698-8e9f-d6e091516650"
         dataset-01: "20.500.11935/44e91ab9-9ed5-4742-8a73-7834fbd0535e"
+
+    doiList:
+      value:
+        - 10.16907/808de0df-a9d3-4698-8e9f-d6e091516650
+        - 10.16907/f1285417-f190-4563-a8ee-04ebd9246a21
+
+    idList:
+      value:
+        - publication-01
+        - dataset-abc
+        - dataset-xyz
