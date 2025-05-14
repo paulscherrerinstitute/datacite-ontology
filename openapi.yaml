@@ -31,6 +31,7 @@ paths:
           Depending on the 'Content-Type' header, the payload can either be:
           - a [RO-Crate Metadata File Descriptor](https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor) for 'application/ld+json'
           - a zipped RO-Crate for 'application/zip'
+          - a multipart payload with one of the two precedent items with 'name=ro-crate' and a map of system specific options as 'name=options'
         content:
           application/ld+json:
             schema:
@@ -39,6 +40,22 @@ paths:
             schema:
               type: string
               format: binary
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                ro-crate:
+                  oneOf:
+                    - $ref: "#/components/schemas/RoCrate"
+                    - type: string
+                      format: binary
+                options:
+                  type: object
+            encoding:
+              ro-crate:
+                contentType: application/ld+json, application/zip
+              options:
+                contentType: application/json
       responses:
         "201":
           description: Map of the JSON-LD identifiers and associated system identifiers created
@@ -77,6 +94,8 @@ paths:
 
         When the 'Accept' header is 'application/zip', the data is also exported
         either in the produced zip file or as remote URLs referenced in the RO-Crate metadata descriptor.
+
+        When the 'Content-Type' header is 'multipart/form-data' a map of system-specific options can be supplied in addition to the RO-Crate.
       requestBody:
         description: List of Digital Object Identifiers [DOIs](https://www.doi.org) or system specific identifiers
         content:
@@ -90,6 +109,22 @@ paths:
                 $ref: "#/components/examples/doiList"
               System specific identifiers:
                 $ref: "#/components/examples/idList"
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                ro-crate:
+                  oneOf:
+                    - $ref: "#/components/schemas/RoCrate"
+                    - type: string
+                      format: binary
+                options:
+                  type: object
+            encoding:
+              ro-crate:
+                contentType: application/ld+json, application/zip
+              options:
+                contentType: application/json
       responses:
         "200":
           description: OK
@@ -130,6 +165,7 @@ paths:
           Depending on the 'Content-Type' header, the payload can either be:
           - a [RO-Crate Metadata File Descriptor](https://www.researchobject.org/ro-crate/specification/1.1/root-data-entity.html#ro-crate-metadata-file-descriptor) for 'application/ld+json'
           - a zipped RO-Crate for 'application/zip'
+          - a multipart payload with one of the two precedent items with 'name=ro-crate' and a map of system specific options as 'name=options'
         content:
           application/ld+json:
             schema:
@@ -138,6 +174,22 @@ paths:
             schema:
               type: string
               format: binary
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                ro-crate:
+                  oneOf:
+                    - $ref: "#/components/schemas/RoCrate"
+                    - type: string
+                      format: binary
+                options:
+                  type: object
+            encoding:
+              ro-crate:
+                contentType: application/ld+json, application/zip
+              options:
+                contentType: application/json
       responses:
         "200":
           description: Result of the validation process
