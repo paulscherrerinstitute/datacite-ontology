@@ -210,7 +210,7 @@ paths:
   /api/v1/publication/validate:
     post:
       tags:
-        - scicat
+        - profiles
       requestBody:
         description: A single Publication in _unflattened_ form.
         content:
